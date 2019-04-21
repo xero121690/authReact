@@ -6,9 +6,7 @@ import {
   Redirect
 } from 'react-router-dom';
 import Home from './Home';
-import Subpage from './Subpage';
 import { TransitionGroup, CSSTransition } from 'react-transition-group';
-import Topics from './Topics';
 import About from './About';
 import Header from './Header';
 
@@ -35,8 +33,8 @@ class App2 extends Component {
                 <Switch location={location}>
                   <Route exact path='/' component={Home} />
                   <Route path='/about' component={About} />
-                  <Route path='/topics' component={Topics} />
-                  <Route path='/subpage' component={Subpage} />
+                  {/* <Route path='/topics' component={Topics} />
+                  <Route path='/subpage' component={Subpage} /> */}
                   <Redirect to='/' />
                 </Switch>
               </div>

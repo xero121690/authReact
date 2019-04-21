@@ -77,8 +77,9 @@ export default class AuthService {
     if (this.loggedIn()) {
       headers['Authorization'] = 'Bearer ' + this.getToken()
     }
-
-    return fetch(url, {
+    // previously
+    // return fetch(`http://ec2-54-157-46-176.compute-1.amazonaws.com:8080/login`, {
+    return fetch(`http://localhost:8080/login`, {
       headers,
       ...options
     })

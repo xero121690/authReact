@@ -7,7 +7,15 @@ import {
   Link
 } from 'react-router-dom';
 import ProtectedMain from './ProtectedMain';
-import AuthService from './AuthService'
+import AuthService from './AuthService';
+import LandingPage from '../componentsD/landingpage'
+import About from '../componentsD/aboutus'
+import Contact from '../componentsD/contact';
+import Team from '../componentsD/team';
+import signup from '../componentsD/signup';
+// import Header from './Header';
+import Logo from './camShare-new.png';
+
 
 const fakeAuth = {
   isAuthenticated: false,
@@ -36,7 +44,23 @@ class Login extends React.Component {
     this.change = this.change.bind(this);
     this.submit = this.submit.bind(this);
     this.Auth = new AuthService();
+
+
   }
+
+  // notes did this on 3/11/2019 
+  // when browser closes, it deletes the key from user
+
+  // componentDidMount() {
+  //   window.addEventListener("beforeunload", localStorage.removeItem('id_token'))
+  // }
+
+  componentWillUnmount() {
+    console.log('componentWillUnmount');
+    window.removeEventListener('beforeunload', localStorage.removeItem('id_token'))
+  }
+
+
 
   change (e) {
     this.setState({
@@ -48,6 +72,7 @@ class Login extends React.Component {
     // We don't want to reload the page on submit, so this prevents it from doing so.
     e.preventDefault();
 
+    // this is using the AuthService component and the login function from authservice ******************************
     this.Auth.login(this.state.email, this.state.password)
 
     if (this.Auth.loggedIn) {
@@ -146,7 +171,7 @@ const AuthButton = withRouter((props) => {
       </div>
 
     ) : (
-        <p className="text-center" >You are not logged in!</p>
+        <p className="text-center" ></p>
       )
   )
 })
@@ -188,6 +213,14 @@ class App extends Component {
   }
 
 
+  // notes did this on 3/11/2019 
+  // when browser closes, it deletes the key from user
+  // componentWillUnmount() {
+  //   console.log('componentWillUnmount');
+  //   window.removeEventListener('beforeunload', localStorage.removeItem('id_token'))
+  // }
+
+
 
 
 
@@ -203,22 +236,40 @@ class App extends Component {
     console.log('App: ', currentKey)
     return (
       <div>
+        <img src={Logo} style={{ height: '135px'}}/>
         <header>
+          
           <AuthButton />
           <nav>
             <ul className="list-reset flex">
-              <li className="mr-6">
-                <Link to="/public" className='bold'>Public Page</Link>
+              <li class="flex-1 mr-2">
+                <a class="text-center block border border-blue rounded py-2 px-4 bg-blue hover:bg-blue-dark text-white"><Link to="/public" className='bold'>Home</Link></a>
               </li>
-              <li className="mr-6">
-                <Link to="/">Protected Page</Link>
+              <li class="flex-1 mr-2">
+                <a class="text-center block border border-blue rounded py-2 px-4 bg-blue hover:bg-blue-dark text-white"><Link to="/aboutus" className='bold'>About Us</Link></a>
+              </li>
+              <li class="flex-1 mr-2">
+                <a class="text-center block border border-blue rounded py-2 px-4 bg-blue hover:bg-blue-dark text-white"><Link to="/team" className='bold'>The Team</Link></a>
+              </li>
+              <li class="flex-1 mr-2">
+              <a class="text-center block border border-blue rounded py-2 px-4 bg-blue hover:bg-blue-dark text-white"><Link to="/contact" className='bold'>Contact</Link></a>
+              </li>
+              <li class="flex-1 mr-2">
+              <a class="text-center block border border-blue rounded py-2 px-4 bg-blue hover:bg-blue-dark text-white"><Link to="/">User</Link></a>
+              </li>
+              <li class="flex-1 mr-2">
+              <a class="text-center block border border-blue rounded py-2 px-4 bg-blue hover:bg-blue-dark text-white"><Link to="/signup" className='bold'>Sign Up!</Link></a>
               </li>
             </ul>
           </nav>
         </header>
         <Switch location={location}>
-          <Route path="/public" component={Public} />
+          <Route path="/public" component={LandingPage} />
           <Route path="/login" component={Login} />
+          <Route path="/aboutus" component={About} />
+          <Route path="/contact" component={Contact} />
+          <Route path="/team" component={Team} />
+          <Route path="/signup" component={signup} />
           {/* PrivateRoute is used because it checks to see if user has been authorized
           in this instance, the user is not authorized by default. 
           However, once user clicks login, a return statement is used and Redirects the user to '/'.
