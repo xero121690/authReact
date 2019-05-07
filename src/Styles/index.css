@@ -119,6 +119,7 @@ body {
 .team-hover .desk {
     position: absolute;
     top: 0%;
+    bottom: 5%;
     width: 100%;
     opacity: 0;
     -webkit-transform: translateY(-55%);

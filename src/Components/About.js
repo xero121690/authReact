@@ -53,50 +53,41 @@ export default class About extends Component {
 
 
   render () {
-    
-  // const imgstyle = {
-  //   width: '100',
-  //   height: '100'
-  // }
+
+    // const imgstyle = {
+    //   width: '100',
+    //   height: '100'
+    // }
     return (
-      <div style={{ display: 'flex',  justifyContent:'center', alignItems:'center'}}>
-      <div>
-
-      
-        <form id="myForm" onSubmit={this.handleUploadImage} >
-          <div >
-            <input ref={(ref) => { this.uploadInput = ref; }} type="file" />
-          </div>
-          <div >
-            <input ref={(ref) => { this.fileName = ref; }} type="text" placeholder="Enter the desired name of file" />
-          </div>
+      <div style={{ display: 'flex', justifyContent: 'center', alignItems: 'center' }}>
+        <div>
+          <form id="myForm" onSubmit={this.handleUploadImage} >
+            <div >
+              <input ref={(ref) => { this.uploadInput = ref; }} type="file" />
+            </div>
+            <div >
+              <input ref={(ref) => { this.fileName = ref; }} type="text" placeholder="Enter the desired name of file" />
+            </div>
+            <br />
+            <div >
+              <button className="bg-black hover:bg-blue-dark text-white font-bold py-2 px-4 rounded-full">Upload</button>
+            </div>
+          </form>
           <br />
-          <div >
-            <button className="bg-black hover:bg-blue-dark text-white font-bold py-2 px-4 rounded-full">Upload</button>
-          </div>
-        </form>
-
-        <br />
-
-        {this.state.imageURL ? (
-         <div style={{ height: 550, width: 450 }}>
-         <div>
-         <img src={this.state.imageURL} alt="whatever user uploaded"/>
-         <div>
-         <a href={this.state.imageURL} download> <br/> <button className="bg-black hover:bg-blue-dark text-white font-bold py-2 px-4 rounded-full">Download</button></a>
-         </div>
-          
-         
-         </div>
-         
-          </div>
-        ) : (
-            <div></div>
-          )
-        }
-
-</div>
-
+          {this.state.imageURL ? (
+            <div style={{ height: 550, width: 450 }}>
+              <div>
+                <img src={this.state.imageURL} alt="whatever user uploaded" />
+                <div>
+                  <a href={this.state.imageURL} download> <br /> <button className="bg-black hover:bg-blue-dark text-white font-bold py-2 px-4 rounded-full">Download</button></a>
+                </div>
+              </div>
+            </div>
+          ) : (
+              <div></div>
+            )
+          }
+        </div>
       </div>
     );
   }

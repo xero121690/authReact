@@ -157,10 +157,6 @@ const AuthButton = withRouter((props) => {
   return (
     fakeAuth.isAuthenticated && Auth.loggedIn() ? (
       <div>
-        <p className="text-center">
-          Welcome!
-        </p>
-
         <p className="text-right">
           <button className="bg-black hover:bg-blue-dark text-white font-bold py-2 px-4 rounded-full" onClick={() => {
             Auth.logout()
@@ -214,7 +210,7 @@ class App extends Component {
 
   render () {
 
-
+    const authButtonPass = <AuthButton/>
     const { location } = this.props;
     // currentKey is used to work with the CSSTransition component so that it keeps track of changes, eseentially so that it updates
     // similar to react and using keys, so that is updates the correct component
@@ -225,8 +221,8 @@ class App extends Component {
       <div>
         <header>
           
-          <AuthButton />
-           <Navigation /> {/*Made a navigation component to clean up in here a bit -Deon */}
+         
+           <Navigation authButton = {authButtonPass}/> {/*Made a navigation component to clean up in here a bit -Deon */}
         </header>
         <Switch location={location}>
           <Route path="/public" component={LandingPage} />

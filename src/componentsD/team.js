@@ -17,7 +17,7 @@ class Team extends Component {
                 <div>
                     <div class="heading-title text-center h-64 shadow-lg">
                         <h3 class="text-uppercase">Our Team </h3>
-                        <p class="p-top-30 half-txt">We’re here to unleash the world’s creative energy by designing a more enlightened way of working.</p>
+                        <p class="p-top-50 half-txt">We’re here to unleash the world’s creative energy by designing a more enlightened way of working.</p>
                     </div>
                     <div class="inline-flex bg-grey-lighter">
                         <div class="container:centered sm:block md:block xl:flex mb-4 bg-grey-lightest shadow-lg px-4 py-2 m-2"> {/*this is where the white frame begins*/} {/*sm:block, md:block etc, are just */}
@@ -28,8 +28,8 @@ class Team extends Component {
                                     </div>
                                     <div class="team-hover">
                                         <div class="desk">
-                                            <h4>Hi!</h4>
-                                            <p>Misael's purpose is to work with React and Node.js back end server development to make sure that web page and back end are both communicating correctly. In addition resolve issues relating to CORS.</p>
+                                            <h4>Down and Dirty</h4>
+                                            <p>I work with React and Node.js development to make sure that web page and back end are both communicating correctly.</p>
                                         </div>
                                         <div class="s-link">
                                             <a href="www.facebook.com"><i class="fa fa-facebook"></i></a>
@@ -51,7 +51,8 @@ class Team extends Component {
                                     <div class="team-hover">
                                         <div class="desk">
                                             <h4>Hello World</h4>
-                                            <p>My primary role was to set up the database for the CAMBshare service with an emphasis on security policies to be implemented in the database.</p>
+                                            {/* <p>My primary role was to set up the database for the CAMBshare service with an emphasis on security policies to be implemented in the database.</p> */}
+                                            <p>My primary role is database management and emphasis on security policies.</p>
                                         </div>
                                         <div class="s-link">
                                             <a href="www.facebook.com"><i class="fa fa-facebook"></i></a>
@@ -94,8 +95,8 @@ class Team extends Component {
                                     </div>
                                     <div class="team-hover">
                                         <div class="desk">
-                                            <h4>I love to design</h4>
-                                            <p>Brandon's main purpose is focused on the implimitation of the database and connection with the server.</p>
+                                            <h4>Databae</h4>
+                                            <p>I focused on implimitation of the database.</p>
                                         </div>
                                         <div class="s-link">
                                             <a href="www.facebook.com"><i class="fa fa-facebook"></i></a>
@@ -117,7 +118,7 @@ class Team extends Component {
                                     <div class="team-hover">
                                         <div class="desk">
                                             <h4>I love to design</h4>
-                                            <p>Responsible for designing, coding and modifying websites, from layout to function and according to a team's specifications. Strive to create visually appealing sites that feature user-friendly design and clear navigation.</p>
+                                            <p>Strive to create visually appealing sites that feature user-friendly design and clear navigation.</p>
                                         </div>
                                         <div class="s-link">
                                             <a href="www.facebook.com"><i class="fa fa-facebook"></i></a>

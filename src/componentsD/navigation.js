@@ -4,8 +4,8 @@ import {
 } from 'react-router-dom';
 
 
-class Navigation extends Component {
-  render () {
+const Navigation = (props) => {
+
     return (
       <nav class="bg-grey-lightest p-2 mt-0 w-full shadow-lg">
         <div class="container mx-auto flex flex-wrap items-center">
@@ -33,12 +33,13 @@ class Navigation extends Component {
               <li class="mr-3">
                 <button id="navAction" class="mx-auto lg:mx-0 hover:underline bg-grey-light text-gray-800 font-bold rounded-full mt-4 lg:mt-0 py-4 px-8 shadow opacity-75 "><Link to="/login" className='bold'>User</Link></button>
               </li>
+              {props.authButton}
             </ul>
           </div>
         </div>
       </nav>
     )
   }
-}
+
 
 export default Navigation;
