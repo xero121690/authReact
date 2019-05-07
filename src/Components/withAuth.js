@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import AuthService from './AuthService';
 
 export default function withAuth(AuthComponent) {
-  const Auth = new AuthService('http://localhost:8080');
+  const Auth = new AuthService('http://ec2-3-213-158-4.compute-1.amazonaws.com:8080');
   return class AuthWrapped extends Component {
     constructor() {
       super();

@@ -3,8 +3,7 @@ import {
   Route,
   Switch,
   withRouter,
-  Redirect,
-  Link
+  Redirect
 } from 'react-router-dom';
 import ProtectedMain from './ProtectedMain';
 import AuthService from './AuthService';
@@ -13,8 +12,8 @@ import About from '../componentsD/aboutus'
 import Contact from '../componentsD/contact';
 import Team from '../componentsD/team';
 import signup from '../componentsD/signup';
+import Navigation from '../componentsD/navigation';
 // import Header from './Header';
-import Logo from './camShare-new.png';
 
 
 const fakeAuth = {
@@ -29,7 +28,7 @@ const fakeAuth = {
   }
 }
 
-const Public = () => <h3>Public</h3>
+// const Public = () => <h3>Public</h3>
 
 class Login extends React.Component {
   constructor(props) {
@@ -55,10 +54,11 @@ class Login extends React.Component {
   //   window.addEventListener("beforeunload", localStorage.removeItem('id_token'))
   // }
 
-  componentWillUnmount() {
-    console.log('componentWillUnmount');
-    window.removeEventListener('beforeunload', localStorage.removeItem('id_token'))
-  }
+  // this was the window closing and opening fix
+  // componentWillUnmount() {
+  //   console.log('componentWillUnmount');
+  //   window.removeEventListener('beforeunload', localStorage.removeItem('id_token'))
+  // }
 
 
 
@@ -136,7 +136,7 @@ class Login extends React.Component {
 
 
 const PrivateRoute = ({ component: Component, ...rest }) => {
-  const Auth = new AuthService('http://localhost:8080');
+  const Auth = new AuthService('http://ec2-3-213-158-4.compute-1.amazonaws.com:8080');
   return (
     <Route {...rest} render={(props) => (
       fakeAuth.isAuthenticated && Auth.loggedIn()
@@ -153,7 +153,7 @@ const PrivateRoute = ({ component: Component, ...rest }) => {
 // before making logout make sure to create the login part such as this.auth.login(email, password)
 const AuthButton = withRouter((props) => {
   // uses the AuthService and sends in the url for the server
-  const Auth = new AuthService('http://localhost:8080');
+  const Auth = new AuthService('http://ec2-3-213-158-4.compute-1.amazonaws.com:8080');
   return (
     fakeAuth.isAuthenticated && Auth.loggedIn() ? (
       <div>
@@ -185,7 +185,7 @@ class App extends Component {
 
 
   componentWillMount () {
-    const Auth = new AuthService('http://localhost:8080');
+    const Auth = new AuthService('http://ec2-3-213-158-4.compute-1.amazonaws.com:8080');
     console.log(Auth.loggedIn)
     if (!Auth.loggedIn()) {
       this.props.history.replace('/login')
@@ -212,19 +212,6 @@ class App extends Component {
     }
   }
 
-
-  // notes did this on 3/11/2019 
-  // when browser closes, it deletes the key from user
-  // componentWillUnmount() {
-  //   console.log('componentWillUnmount');
-  //   window.removeEventListener('beforeunload', localStorage.removeItem('id_token'))
-  // }
-
-
-
-
-
-
   render () {
 
 
@@ -236,32 +223,10 @@ class App extends Component {
     console.log('App: ', currentKey)
     return (
       <div>
-        <img src={Logo} style={{ height: '135px'}}/>
         <header>
           
           <AuthButton />
-          <nav>
-            <ul className="list-reset flex">
-              <li class="flex-1 mr-2">
-                <a class="text-center block border border-blue rounded py-2 px-4 bg-blue hover:bg-blue-dark text-white"><Link to="/public" className='bold'>Home</Link></a>
-              </li>
-              <li class="flex-1 mr-2">
-                <a class="text-center block border border-blue rounded py-2 px-4 bg-blue hover:bg-blue-dark text-white"><Link to="/aboutus" className='bold'>About Us</Link></a>
-              </li>
-              <li class="flex-1 mr-2">
-                <a class="text-center block border border-blue rounded py-2 px-4 bg-blue hover:bg-blue-dark text-white"><Link to="/team" className='bold'>The Team</Link></a>
-              </li>
-              <li class="flex-1 mr-2">
-              <a class="text-center block border border-blue rounded py-2 px-4 bg-blue hover:bg-blue-dark text-white"><Link to="/contact" className='bold'>Contact</Link></a>
-              </li>
-              <li class="flex-1 mr-2">
-              <a class="text-center block border border-blue rounded py-2 px-4 bg-blue hover:bg-blue-dark text-white"><Link to="/">User</Link></a>
-              </li>
-              <li class="flex-1 mr-2">
-              <a class="text-center block border border-blue rounded py-2 px-4 bg-blue hover:bg-blue-dark text-white"><Link to="/signup" className='bold'>Sign Up!</Link></a>
-              </li>
-            </ul>
-          </nav>
+           <Navigation /> {/*Made a navigation component to clean up in here a bit -Deon */}
         </header>
         <Switch location={location}>
           <Route path="/public" component={LandingPage} />

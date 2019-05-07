@@ -1,7 +1,7 @@
 import decode from 'jwt-decode';
 export default class AuthService {
   constructor(domain) {
-    this.domain = domain || 'http://localhost:8080' // API server domain
+    this.domain = domain || 'http://ec2-3-213-158-4.compute-1.amazonaws.com:8080' // API server domain
     // react binding stuff
     this.fetch = this.fetch.bind(this) 
     this.login = this.login.bind(this)
@@ -78,8 +78,8 @@ export default class AuthService {
       headers['Authorization'] = 'Bearer ' + this.getToken()
     }
     // previously
-    // return fetch(`http://ec2-54-157-46-176.compute-1.amazonaws.com:8080/login`, {
-    return fetch(`http://localhost:8080/login`, {
+      // http://localhost:8080/login
+    return fetch(`http://ec2-3-213-158-4.compute-1.amazonaws.com:8080/login`, {
       headers,
       ...options
     })
